@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../Games_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+	</head>
+  
+	<body class="body">
+		<div>
+			<p>Gaétan Rische</p>
+			<p>VIDEO GAME PROGRAMMER</p>
+			<div></div>
+		</div>
+		
+		<!--MENU-->
+		<nav class="flex">
+			 <nav class="menuText" onclick="location.href='../Index.html';">
+				<p>
+					PROFIL
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='../Projects.html';">
+				<p>
+					PROJETS
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='../CV_Gaetan_Rische_Fr.pdf';">
+				<p>
+					CV
+				</p>
+			 </nav>
+		</nav>
+		
+		<!--TOUT LE RESTE-->
+		<div class="main">
+			<article>
+				<header></header>
+				<div>
+					<img src="../Images/Games/OrbiUniverso_Title.png" alt="Title">
+					<p>
+						<b>Orbi Universo (2019)</b> - <font color="red">En cours de développement</font>
+						<br><br>
+						<i>
+						• Moteur : Unity
+						<br>
+						• Projet en équipe (5 membres)
+						<br>
+						• Rôle : Programmeur
+						</i>
+					</p>
+					<div>
+						<i>Incarnez la civilisation de votre choix ou imaginez votre propre empire et faites le résister aux aléas du temps.</i>
+					</div>
+					<p>
+						Orbi Universo est un jeu de gestion dans lequel le joueur prend le contrôle d'une civilisation et son but est de la faire prospérer le plus longtemps possible.
+						<br><br>
+						La civilisation du joueur est présentée sous la forme d'éléments appelés noeuds, qui représentent les concepts fondamentaux qui caractérisent cette civilisation (Population, Gouvernement, Religion, Armée, ...)
+						<img src="OrbiUniverso_Images/Exemple_01.png" alt="Example">
+						Au cours de la partie, le joueur débloquera de nouveaux noeuds et ainsi fera évoluer sa civilisation selon ses envies.
+						<br><br>
+						L'un des principaux intérêts du jeu est la possibilité de modder son contenu à l'aide d'un language de programmation dédié permettant aux joueurs d'ajouter de nouveaux noeuds.
+					</p>
+					<div>
+						<div class="explanation">
+							<font size=6>Explication du système :<br>Structure des données liées au modding</font>
+							<br><br>
+							Lors du développement de Orbi Universo, j'ai dû imaginer un moyen de représenter les données contenues
+							dans les noeuds <i>(nodes en anglais)</i> de manière à ce que celles-ci soient facilement lisibles à la fois par les moddeurs et
+							par le jeu lui-même.
+							<br>
+							<br>
+							Mon approche a été de regrouper les données dans des blocs sous la forme suivante :
+							<div class="code">
+								BlockName = {</font>
+								<br><font color="#22aa22">&ensp;	// Block content here</font>
+								<br>}
+							</div>
+							<br>
+							Chaque bloc peut contenir d'autres blocs et ainsi former l'ensemble du mod, comme représenté sur ce schéma :
+							<img src="OrbiUniverso_Images/Code_01.png" alt="Example">
+							<br>
+							Et enfin voici le résultat en code :
+							<div class="code">
+								<font color="#22aa22">// Exemple de la structure d'un mod</font>
+								<br>
+								<br><font color="#f77">Main = {</font>
+								<br><font color="#7f7">&ensp;	Nodes = {</font>
+								<br>&ensp;&ensp;		States = {
+								<br><font color="#77f">&ensp;&ensp;&ensp;			Population = {</font>
+								<br>&ensp;&ensp;&ensp;&ensp;				VALUE value [ 0 5 10000 ]
+								<br>&ensp;&ensp;&ensp;&ensp;				DISPLAY_VALUE
+								<br>&ensp;&ensp;&ensp;&ensp;				
+								<font color="#ff7">
+								<br>&ensp;&ensp;&ensp;&ensp;				TICK = {
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					PROCESS $PoliticalPower += PerSeconds(1.1)
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					PROCESS Food -= PerSeconds(value * value / 2000 * ( 0.99 ? 1.01 ))
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					IF value == 0
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;						GAMEOVER
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					ENDIF
+								<br>&ensp;&ensp;&ensp;&ensp;				}
+								<br>&ensp;&ensp;&ensp;&ensp;
+								<br>&ensp;&ensp;&ensp;&ensp;				LINK Food = {
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					FLUX 0.5 + value / 500
+								<br>&ensp;&ensp;&ensp;&ensp;&ensp;					COLOR red
+								<br>&ensp;&ensp;&ensp;&ensp;				}
+								</font>
+								<br><font color="#77f">&ensp;&ensp;&ensp;			}</font>	
+								<br>&ensp;&ensp;		}
+								<br><font color="#7f7">&ensp;	}</font>
+								<br><font color="#f77">}</font>
+							</div>
+							- Le premier bloc <font color="#f77">(Rouge)</font> représente l'ensemble du mod et contient tout les autres blocs.
+							<br>
+							- Le deuxième bloc <font color="#7f7">(Vert)</font> Contient tout les blocs représentant les noeuds.
+							<br>
+							<font color="#bbb">- Le troisième bloc permet de séparer différents types de noeuds et n'est pas utile dans cet exemple.</font>
+							<br>
+							- Le quatrième bloc <font color="#77f">(Bleu)</font> Représente le noeud lui-même.
+							<br>
+							- Les deux derniers blocs <font color="#ff7">(Jaune)</font> Représente les événements exécutés par le noeud.
+						</div>
+					</div>
+					<br>
+					<div>
+						<div class="explanation">
+							<font size=6>Explication du système :<br>Lecture des expressions mathématiques</font>
+							<br><br>
+							Prenons l'exemple suivant :
+							<div class="code">
+								Population = { <font color="#2a2">// Déclaration du noeu appellé 'Population'</font>
+								<br>&ensp;	VALUE value [ 0 5 100 ] <font color="#2a2">// Déclaration d'une variable appellé 'value'</font>
+								<br>&ensp;	
+								<br>&ensp;	TICK = {
+								<br>&ensp;&ensp;		PROCESS value = 1 + value * ( 2 / 3 )
+								<br>&ensp;	}
+								<br>}	
+							</div>
+							<br>
+							La ligne <font color="#fbb">PROCESS value = 1 + value * ( 2 / 3 )</font> calcule la valeur de <font color="#fbb">1 + value * ( 2 / 3 )</font> et la met dans la variable <font color="#fbb">value</font>
+							<br><br>
+							Pour que le moteur de jeu traduise cette ligne de texte en expression compréhensible par la machine, j'ai procédé de la manière suivante :
+							<br><br>
+							L'expression <font color="#fbb">1 + value * ( 2 / 3 )</font> comporte des opérateurs (+, *, /) avec des valeurs de chaque coté.
+							Chaque opération doit être calculé dans le bon ordre (la division en premier, puis la multiplication, puis l'addition)
+							Pour cela j'ai défini une interface pour représenter tout les opérateurs :
+							<div class="code">
+								<font color="#f22">public interface</font> IArithmeticOperator
+								<br>{
+								<br>&ensp;	<font color="#2a2">// Permet de calcuter le résultat de l'opération entre deux valeurs</font>
+								<br>&ensp;	<font color="#f22">float</font> Evaluate(<font color="#f22">float</font> _v1, <font color="#f22">float</font> _v2);
+								<br>}	
+							</div>
+							<br>
+							Ainsi qu'une autre interface qui représente toutes les valeurs constantes ou variables (ici 1, value, 2 et 3) :
+							<div class="code">
+								<font color="#f22">public interface</font> IArithmeticValue
+								<br>{
+								<br>&ensp;	<font color="#f22">float</font> Value { <font color="#f22">get</font>; }
+								<br>}	
+							</div>
+							<br>
+							Chaque expression est alors stocké dans une classe:
+							<div class="code">
+								<font color="#f22">public class</font> ArithmeticExpression : IArithmeticValue
+								<br>{
+								<br>&ensp;	<font color="#f22">public</font> IArithmeticValue value1;
+								<br>&ensp;	<font color="#f22">public</font> IArithmeticValue value2;
+								<br>&ensp;	<font color="#f22">public</font> IArithmeticOperator expressionOperator;
+								<br>&ensp;
+								<br>&ensp;	<font color="#f22">public</font> float Value
+								<br>&ensp;	{
+								<br>&ensp;&ensp;		<font color="#f22">get</font> {
+								<br>&ensp;&ensp;&ensp;			<font color="#f22">return</font> expressionOperator.Evaluate(value1.Value, value2.Value);
+								<br>&ensp;&ensp;		}
+								<br>&ensp;	}
+								<br>}
+							</div>
+							<br>
+							Comme vous avez pu le remarquer, la classe <i>ArithmeticExpression</i> implémente aussi l'interface <i>IArithmeticValue</i>, ce si signifie qu'une expression peut utiliser une autre expression comme valeur.
+							<br><br>
+							Pour en revenir à notre exemple, l'expression <font color="#fbb">1 + value * ( 2 / 3 )</font> peut être structurée sous la forme d'un arbre de plusieurs instances de <i>ArithmeticExpression</i> :
+							<img src="OrbiUniverso_Images/Code_02.png" alt="Example">
+							Il suffit alors de récupérer la valeur de l'expression ayant comme operateur <font color="#fbb">+</font> pour avoir le résultat de toute l'expression.
+						</div>
+					</div>
+				</div>
+				<div>
+					<img src="OrbiUniverso_Images/ScreenShot_01.jpg" alt="ScreenShot_01" height="400" width="400">
+					<img src="OrbiUniverso_Images/ScreenShot_02.jpg" alt="ScreenShot_02" height="400" width="400">
+					<img src="OrbiUniverso_Images/ScreenShot_03.jpg" alt="ScreenShot_03" height="400" width="400">
+					<img src="OrbiUniverso_Images/ScreenShot_04.jpg" alt="ScreenShot_04" height="400" width="400">
+					<img src="OrbiUniverso_Images/ScreenShot_05.jpg" alt="ScreenShot_05" height="400" width="400">
+				</div>
+			</article>
+		</div>
+	</body>
+</html>

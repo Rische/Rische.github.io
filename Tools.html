@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="Gaetan_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+	</head>
+  
+	<body class="body">
+		<div>
+			<p>Gaétan Rische</p>
+			<p>VIDEO GAME PROGRAMMER</p>
+			<div></div>
+		</div>
+		
+		<!--MENU-->
+		<nav class="flex">
+			 <nav class="menuText" onclick="location.href='Index.html';">
+				<p>
+					PROFIL
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='Projects.html';">
+				<p>
+					PROJETS
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='CV_Gaetan_Rische_Fr.pdf';">
+				<p>
+					CV
+				</p>
+			 </nav>
+		</nav>
+		
+		<!--TOUT LE RESTE-->
+		<!--<script src="Slides.js" type="text/javascript"></script>-->
+		<div class="main">
+			
+			<article class="sectionLeft">
+				<header></header>
+				<figure class="slideshow-container" style="background-image:url(Images/Tools/Dialog_1.jpg)">
+					<img src="Images/TriangleRight.png" alt="" style="width:10%">
+					<a class="slideshow-prev" onclick="plusSlides(-1, 0, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 0, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10095;</a>
+				</figure>
+				<div>
+					<p>
+						<b>Editeur de dialogue</b>
+						<br><br>
+						Un éditeur de dialogue pour Unity utilisé lors du dévellopement du jeu Camp.us. Permet de créer des dialogues à choix multiples et de déclancher des évenements en jeu.
+					</p>
+				</div>
+				<figure class="center-cropped" style="background-image:url(Images/Games/Souriez.jpg)"></figure>
+			</article>
+			
+			<article class="sectionRight">
+				<header></header>
+				<div>
+					<p>
+						<b>Langage de programmation personalisé</b>
+						<br><br>
+						Un langage que j'ai développé pour le support de modding du jeu Orbi Universo. Pour plus d'information, visitez  <a href="Games/OrbiUniverso.html">la page dédié au jeu</a>.
+					</p>
+				</div>
+				<figure class="slideshow-container" style="background-image:url(Images/Tools/Code_1.jpg)">
+					<img src="Images/TriangleRight.png" alt="" style="width:10%">
+					<a class="slideshow-prev" onclick="plusSlides(-1, 1, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 1, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10095;</a>
+				</figure>
+			</article>
+		
+		</div>
+		
+		<script>
+			var slideIndex = [0,0];
+
+			function plusSlides(offset, slide, images) {
+				slideIndex[slide] = slideIndex[slide] + offset;
+				if (slideIndex[slide] < 0) { slideIndex[slide] = images.length - 1; }
+				if (slideIndex[slide] >= images.length) { slideIndex[slide] = 0; }
+				showSlides(slide, slideIndex[slide], images);
+			}
+
+			function showSlides(slide, image, images) {
+			  var x = document.getElementsByClassName("slideshow-container");
+			  x[slide].style.backgroundImage = "url("+images[image]+")";
+			}
+		</script>
+	</body>
+</html>

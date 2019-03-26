@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../Games_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+	</head>
+  
+	<body class="body">
+		<div>
+			<p>Gaétan Rische</p>
+			<p>VIDEO GAME PROGRAMMER</p>
+			<div></div>
+		</div>
+		
+		<!--MENU-->
+		<nav class="flex">
+			 <nav class="menuText" onclick="location.href='../Index.html';">
+				<p>
+					PROFIL
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='../Projects.html';">
+				<p>
+					PROJETS
+				</p>
+			 </nav>
+			 <nav class="menuText" onclick="location.href='../CV_Gaetan_Rische_Fr.pdf';">
+				<p>
+					CV
+				</p>
+			 </nav>
+		</nav>
+		
+		<!--TOUT LE RESTE-->
+		<div class="main">
+			<article>
+				<header></header>
+				<div>
+					<img src="../Images/Games/RaS_Title.png" alt="Title">
+					<p>
+						<b>Ruins and Switch (2018)</b> - <font color="red">En cours de développement</font>
+						<br><br>
+						<i>
+						• Moteur : Game Maker Studio
+						<br>
+						• Projet en équipe (4 membres)
+						<br>
+						• Rôle : Programmeur, Game Designer
+						</i>
+					</p>
+					<div>
+					<i>Explorez des ruines maudites à la recherche de fabuleux trésors dans ce jeux de plateforme Action/Puzzle.</i>
+					</div>
+					<p>
+						<b>Ruins and Switch (2018)</b> - <font color="red">En cours de développement</font>
+						<br><br>
+						<i>
+						• Moteur : Game Maker Studio
+						<br>
+						• Projet en équipe (4 membres)
+						<br>
+						• Rôle : Programmeur, Game Designer
+						</i>
+					</p>
+					<div>
+						<div class="code">
+							<font color="#22aa22">///screen_projector_cylinder_project(offset_x, offset_y, use_light, input_surface, output_surface, use_shadow, depth)</font>
+							<br>
+							<br>var offx = argument0
+							<br>var offy = argument1
+							<br>var light = argument2
+							<br>var input = argument3
+							<br>var output = argument4
+							<br>var shadow = argument5
+							<br>var dep = argument6
+							<br>
+							<br>var radius = 320 / pi
+							<br>var tex = surface_get_texture(input)
+							<br>
+							<br>surface_set_target(output)
+							<br>draw_clear_alpha(c_black, 0)
+							<br>
+							<br>if shadow
+							<br>&ensp;	{
+							<br>&ensp;	shader_set(shd_backdrop)
+							<br>&ensp;	draw_primitive_begin_texture(pr_trianglestrip, tex)
+							<br>&ensp;	for(var i=0; i<=1; i+=.05)
+							<br>&ensp;&ensp;		{
+							<br>&ensp;&ensp;		var xx = 320 / 2 + cos(pi+i * pi) * radius
+							<br>&ensp;&ensp;		draw_vertex_texture(xx+2, 0+2, i, 0)
+							<br>&ensp;&ensp;		draw_vertex_texture(xx+2, 240+2, i, 1)
+							<br>&ensp;&ensp;		}
+							<br>&ensp;	draw_primitive_end()
+							<br>&ensp;	shader_reset()
+							<br>&ensp;	}
+							<br>
+							<br>shader_set(shd_outside_light)
+							<br>shader_set_uniform_f(global.SP_darkness, .5)
+							<br>for(var j=dep; j>0; j--)
+							<br>&ensp;	{
+							<br>&ensp;	draw_primitive_begin_texture(pr_trianglestrip, tex)
+							<br>&ensp;	for(var i=0; i<=1; i+=.05)
+							<br>&ensp;&ensp;		{
+							<br>&ensp;&ensp;		var xx = 320 / 2 + cos(pi+i*pi) * (radius-j)
+							<br>&ensp;&ensp;		draw_vertex_texture_colour(xx, 0, i, 0, c_white, 1)
+							<br>&ensp;&ensp;		draw_vertex_texture_colour(xx, 240, i, 1, c_white, 1)
+							<br>&ensp;&ensp;		}
+							<br>&ensp;	draw_primitive_end()
+							<br>&ensp;	}
+							<br>
+							<br>shader_set_uniform_f(global.SP_darkness, 0)
+							<br>
+							<br>draw_primitive_begin_texture(pr_trianglestrip, tex)
+							<br>for(var i=0; i<=1; i+=.05)
+							<br>&ensp;	{
+							<br>&ensp;	var xx = 320 / 2 + cos(pi+i*pi) * radius
+							<br>&ensp;	draw_vertex_texture(xx, 0, i, 0)
+							<br>&ensp;	draw_vertex_texture(xx, 240, i, 1)
+							<br>&ensp;	}
+							<br>draw_primitive_end()
+							<br>
+							<br>shader_reset()
+							<br>surface_reset_target()
+						</div>
+					</div>
+				</div>
+				<div>
+					<img src="../Images/Games/RaS.jpg" alt="ScreenShot_01" height="400" width="400">
+					<img src="../Images/Games/RaS.jpg" alt="ScreenShot_01" height="400" width="400">
+				</div>
+			</article>
+		</div>
+	</body>
+</html>

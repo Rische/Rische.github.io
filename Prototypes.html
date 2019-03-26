@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="Gaetan_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+	</head>
+  
+	<body class="body">
+		<div>
+			<p>Gaétan Rische</p>
+			<p>VIDEO GAME PROGRAMMER</p>
+			<div></div>
+		</div>
+    
+	<!--MENU-->
+	<nav class="flex">
+		 <nav class="menuText" onclick="location.href='Index.html';">
+			<p>
+				PROFIL
+			</p>
+		 </nav>
+		 <nav class="menuText" onclick="location.href='Projects.html';">
+			<p>
+				PROJETS
+			</p>
+		 </nav>
+		 <nav class="menuText" onclick="location.href='CV_Gaetan_Rische_Fr.pdf';">
+			<p>
+				CV
+			</p>
+		 </nav>
+    </nav>
+	
+	<!--TOUT LE RESTE-->
+    <div class="main">
+		
+		<article class="sectionRight">
+			<header></header>
+			<div>
+				<p>
+					<b>Réseau neuronal</b>
+					<br>
+					<i>
+					• Moteur : Unity
+					<br>
+					• Langage : C#
+					</i>
+					<br><br>
+					Le réseau permet à un objet de se déplacer vers un point en évitant certains obstacles.
+					<br>
+					Chaque génération hérite de l'instance la plus performante de la génération précédente, avec certaines mutations aléatoires.
+				</p>
+			</div>
+			<figure class="slideshow-container" style="background-image:url(Images/Prototypes/Network_1.jpg)">
+				<img src="Images/TriangleRight.png" alt="" style="width:10%">
+				<a class="slideshow-prev" onclick="plusSlides(-1, 0, ['Images/Prototypes/Network_1.jpg','Images/Prototypes/Network_2.gif','Images/Prototypes/Network_3.gif'])">&#10094;</a>
+				<a class="slideshow-next" onclick="plusSlides(1, 0, ['Images/Prototypes/Network_1.jpg','Images/Prototypes/Network_2.gif','Images/Prototypes/Network_3.gif'])">&#10095;</a>
+			</figure>
+		</article>
+		
+		<article class="sectionLeft">
+			<header></header>
+			<figure class="slideshow-container" style="background-image:url(Images/Prototypes/Engine_1.jpg)">
+				<img src="Images/TriangleRight.png" alt="" style="width:10%">
+				<a class="slideshow-prev" onclick="plusSlides(-1, 1, ['Images/Prototypes/Engine_1.jpg','Images/Prototypes/Engine_2.gif'])">&#10094;</a>
+				<a class="slideshow-next" onclick="plusSlides(1, 1, ['Images/Prototypes/Engine_1.jpg','Images/Prototypes/Engine_2.gif'])">&#10095;</a>
+			</figure>
+			<div>
+				<p>
+					<b>Moteur de jeu 3D</b>
+					<br>
+					<i>
+					• Langage : C++
+					</i>
+					<br><br>
+					Un moteur 3D temps réel écrit en C++ à l'aide des bibliothèques <i>SDL2</i> et <i>boost</i>, capable de lire des fichiers Wavefront OBJ.
+				</p>
+			</div>
+			<figure class="slideshow-container" style="background-image:url(Images/Prototypes/Engine_1.jpg)">
+				<img src="Images/TriangleRight.png" alt="" style="width:10%">
+				<a class="slideshow-prev" onclick="plusSlides(-1, 2, ['Images/Prototypes/Engine_1.jpg','Images/Prototypes/Engine_2.gif'])">&#10094;</a>
+				<a class="slideshow-next" onclick="plusSlides(1, 2, ['Images/Prototypes/Engine_1.jpg','Images/Prototypes/Engine_2.gif'])">&#10095;</a>
+			</figure>
+		</article>
+		
+		<article class="sectionRight">
+			<header></header>
+			<div>
+				<p>
+					<b>Jeu pour Nintendo Entertainment System</b>
+					<br>
+					<i>
+					• Langage : C
+					</i>
+					<br><br>
+					Un casse-brique écrit en C pour la console NES à l'aide du compilateur <i>cc65</i>.
+				</p>
+			</div>
+			<figure class="center-cropped" style="background-image:url(Images/Prototypes/NES.jpg)">
+				<img src="Images/TriangleRight.png" alt="" style="width:10%">
+			</figure>
+		</article>
+		
+		<script>
+			var slideIndex = [0,0,0];
+
+			function plusSlides(offset, slide, images) {
+				slideIndex[slide] = slideIndex[slide] + offset;
+				if (slideIndex[slide] < 0) { slideIndex[slide] = images.length - 1; }
+				if (slideIndex[slide] >= images.length) { slideIndex[slide] = 0; }
+				showSlides(slide, slideIndex[slide], images);
+			}
+
+			function showSlides(slide, image, images) {
+			  var x = document.getElementsByClassName("slideshow-container");
+			  x[slide].style.backgroundImage = "url("+images[image]+")";
+			}
+		</script>
+	</body>
+</html>

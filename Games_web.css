@@ -1,0 +1,68 @@
+@import "Base_web.css"; 
+
+article{
+	display: flex;
+	width: 100%;
+	height: auto;
+	
+	font-size: 20px;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	line-height: 1.6;
+}
+article > div:nth-child(2) {
+	width: 100%;
+}
+article > div:nth-child(2) > div {
+	background-color: #355;
+	color: #ffffff;
+	padding: 15px 10%;
+	font-size: 18px;
+	text-align: center;
+}
+article > div:nth-child(3) { /* Images */
+	width: 500px;
+	padding: 10px;
+	background-color: #333;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+article > div > p {
+	margin: 30px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+	display: block;
+	margin: 10px auto;
+}
+figure{
+	background-color: black;
+	text-align: center;
+	margin: 0;
+}
+.code{
+	border-radius: 10px;
+	font-family: Consolas,monaco,monospace;
+	background-color: #222;
+	padding: 10px;
+	text-align: left;
+	color: #ffffff;
+	font-size: 14px;
+}
+
+.explanation{
+	text-align: left;
+}
+
+@media only screen and (max-width: 662px){
+	article{
+		display: block;
+		width: 100%;
+		height: 100%;
+		
+		font-size: 20px;
+		font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		line-height: 1.6;
+	}
+}
