@@ -37,6 +37,8 @@
 	transition: color 0.3s, background-color 0.3s;
 	border-radius: 3px;
 	text-shadow: 0px 0px 3px #fff;
+	background-color: rgba(255, 255, 255, 0.5);
+	
 }
 
 /* Position the "next button" to the right */

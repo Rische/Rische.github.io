@@ -5,33 +5,10 @@
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="../Games_web.css">
 		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+		<script type="text/javascript" src="../AutoHeader.js"></script>
 	</head>
   
-	<body class="body">
-		<div>
-			<p>Gaétan Rische</p>
-			<p>VIDEO GAME PROGRAMMER</p>
-			<div></div>
-		</div>
-		
-		<!--MENU-->
-		<nav class="flex">
-			 <nav class="menuText" onclick="location.href='../index.html';">
-				<p>
-					PROFIL
-				</p>
-			 </nav>
-			 <nav class="menuText" onclick="location.href='../Projects.html';">
-				<p>
-					PROJETS
-				</p>
-			 </nav>
-			 <nav class="menuText" onclick="location.href='../CV_Gaetan_Rische_Fr.pdf';">
-				<p>
-					CV
-				</p>
-			 </nav>
-		</nav>
+	<body class="body" onLoad="InitializeMenu(true)">
 		
 		<!--TOUT LE RESTE-->
 		<div class="main">
@@ -40,7 +17,8 @@
 				<div>
 					<img src="../Images/Games/OrbiUniverso_Title.png" alt="Title">
 					<p>
-						<b>Orbi Universo (2019)</b> - <font color="red">En cours de développement</font>
+						<b>Orbi Universo (2019)</b>
+						<a href="https://store.steampowered.com/app/1090670/Orbi_Universo/" rel="noopener noreferrer" target="_blank"><img src="../Images/Games/Logo_Steam.png" alt="Steam" align="right" style="max-width:10%; display:inline;"></a>
 						<br><br>
 						<i>
 						• Moteur : Unity
@@ -187,13 +165,33 @@
 					</div>
 				</div>
 				<div>
-					<img src="OrbiUniverso_Images/ScreenShot_01.jpg" alt="ScreenShot_01" height="400" width="400">
-					<img src="OrbiUniverso_Images/ScreenShot_02.jpg" alt="ScreenShot_02" height="400" width="400">
-					<img src="OrbiUniverso_Images/ScreenShot_03.jpg" alt="ScreenShot_03" height="400" width="400">
-					<img src="OrbiUniverso_Images/ScreenShot_04.jpg" alt="ScreenShot_04" height="400" width="400">
-					<img src="OrbiUniverso_Images/ScreenShot_05.jpg" alt="ScreenShot_05" height="400" width="400">
+					<div>
+						<a onclick="location.href='../Projects.html';">Projets</a><br>
+						&ensp;⤷ <a onclick="location.href='../Games.html';">Jeux</a><br>
+						&ensp;&ensp;⤷ Orbi Universo<br>
+					</div>
+					<img class="image-galery" src="OrbiUniverso_Images/ScreenShot_01.jpg" alt="ScreenShot_01" height="400" width="400" onclick="focusImage('OrbiUniverso_Images/ScreenShot_01.jpg')">
+					<img class="image-galery" src="OrbiUniverso_Images/ScreenShot_02.jpg" alt="ScreenShot_02" height="400" width="400" onclick="focusImage('OrbiUniverso_Images/ScreenShot_02.jpg')">
+					<img class="image-galery" src="OrbiUniverso_Images/ScreenShot_03.jpg" alt="ScreenShot_03" height="400" width="400" onclick="focusImage('OrbiUniverso_Images/ScreenShot_03.jpg')">
+					<img class="image-galery" src="OrbiUniverso_Images/ScreenShot_04.jpg" alt="ScreenShot_04" height="400" width="400" onclick="focusImage('OrbiUniverso_Images/ScreenShot_04.jpg')">
+					<img class="image-galery" src="OrbiUniverso_Images/ScreenShot_05.jpg" alt="ScreenShot_05" height="400" width="400" onclick="focusImage('OrbiUniverso_Images/ScreenShot_05.jpg')">
 				</div>
 			</article>
 		</div>
+		
+		<!--IMAGE POPUP-->
+		<div id="focusImage" style="display: none; position: fixed; top: 0px; left: 0px; width: calc(100% + 0px); height: calc(100% + 0px); background-color: rgba(0,0,0,0.5);" onclick="focusImage()">
+			<img src="OrbiUniverso_Images/ScreenShot_01.jpg" alt="ScreenShot" style="position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0; height: 90%;">
+		</div>
+		<script>
+			function focusImage(url){
+				var foc = document.getElementById("focusImage");
+				if(foc.style.display === "none"){
+					foc.style.display = "block";
+					foc.children[0].src = url;
+				}else
+					foc.style.display = "none";
+			}
+		</script>
 	</body>
 </html>

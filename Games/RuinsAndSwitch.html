@@ -5,33 +5,10 @@
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="../Games_web.css">
 		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+		<script type="text/javascript" src="AutoHeader.js"></script>
 	</head>
   
-	<body class="body">
-		<div>
-			<p>Gaétan Rische</p>
-			<p>VIDEO GAME PROGRAMMER</p>
-			<div></div>
-		</div>
-		
-		<!--MENU-->
-		<nav class="flex">
-			 <nav class="menuText" onclick="location.href='../index.html';">
-				<p>
-					PROFIL
-				</p>
-			 </nav>
-			 <nav class="menuText" onclick="location.href='../Projects.html';">
-				<p>
-					PROJETS
-				</p>
-			 </nav>
-			 <nav class="menuText" onclick="location.href='../CV_Gaetan_Rische_Fr.pdf';">
-				<p>
-					CV
-				</p>
-			 </nav>
-		</nav>
+	<body class="body" onLoad="InitializeMenu(true)">
 		
 		<!--TOUT LE RESTE-->
 		<div class="main">
@@ -40,7 +17,8 @@
 				<div>
 					<img src="../Images/Games/RaS_Title.png" alt="Title">
 					<p>
-						<b>Ruins and Switch (2018)</b> - <font color="red">En cours de développement</font>
+						<b>Ruins and Switch (2018)</b>
+						<a href="https://fabsquare.itch.io/ruins-and-switch" rel="noopener noreferrer" target="_blank"><img src="../Images/Games/Logo_Itchio.png" alt="Itchio" align="right" style="max-width:10%; display:inline;"></a>
 						<br><br>
 						<i>
 						• Moteur : Game Maker Studio
