@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../Games_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+		<script type="text/javascript" src="../AutoHeader.js"></script>
+	</head>
+  
+	<body class="body" onLoad="InitializeMenu(true)">
+		
+		<!--TOUT LE RESTE-->
+		<div class="main">
+			<article>
+				<header></header>
+				<div>
+					<img src="../Images/Games/HaulAway_Title.png" alt="Title">
+					<p>
+						<b>Haul Away (2020)</b> <font color="#ff2222" size=3>En cours de développement</font>
+						<br><br>
+						<i>
+						• Moteur : Unreal Engine
+						<br>
+						• Projet en équipe (8 membres)
+						<br>
+						• Rôle : Programmeur moteur
+						</i>
+					</p>
+					<div>
+						<i>Incarnez une jeune fille nommée Elea perdue sur une île déserte et prenez la mer sur votre voiler à la recherche du navire de vos proches.</i>
+					</div>
+					<p>
+						Haul Away est un jeu d'aventures et d'exploration à bord d'un voiler. Le joueur devra naviguer d'île en île afin de trouver les indices qui le mèneront vers le bateau des proches l'Eléa.
+						Mais la mer regorge l'obstacle à franchir : récifs, haut fonds, courant marin, icebergs ou encore tempête.
+						<br><br>
+						Le joueur devra apprende à maîtriser les différentes parties de son navire et utiliser la force du vent pour traverser les archipels escarpés de la mer du Nord.
+					</p>
+					<div>
+						<div class="explanation">
+							<font size=6>Explication du système :<br>Météo et forme des vagues</font>
+							<br>
+							<img src="HaulAway_Images/Exemple_01.gif" alt="Example">
+							<br>
+							L'un des aspects le plus important du jeu est l'océan, c'est ici que le joueur va passer la plupart de son temps à naviguer.
+							<br>
+							Mon objectif est de créer un océan crédible sur lequel des objets peuvent flotter comme le navire du joueur par exemple.
+							<img src="HaulAway_Images/Exemple_06.gif" alt="Example">
+							Afin de pouvoir simuler la flottaison des objets, j'ai dû uniquement utiliser des formules mathématiques pour générer les vagues, contrairement à des textures qui consommeraient trop de ressources.
+							<br><br>
+							L'un des principaux inconvénients des formules mathématiques et que la forme des vagues devient très vite répétitive. Voici donc ma démarche pour résoudre ce problème :
+							<br>
+							<div class="code">
+								<img src="HaulAway_Images/Exemple_02.gif" alt="Example">
+								Je commence par former des vagues parallèles et ondulées avec des fonctions sinus. Les différentes couleurs correspondent à l'axe de déplacement de la surface.
+							</div>
+							<br>
+							<div class="code">
+								<img src="HaulAway_Images/Exemple_03.gif" alt="Example">
+								Je combine ensuite huit exemplaires de ces vagues, chacune avec une taille et une orientation légèrement différente pour donner un effet chaotique.
+								<br>
+								Cette combinaison de vagues est utilisé pour déformer la surface de l'eau. 
+							</div>
+							<br>
+							<div class="code">
+								<img src="HaulAway_Images/Exemple_04.gif" alt="Example">
+								Pour afficher l'écume au sommet des vagues, j'utilise un masque formé à partir de la normale de la surface que j'ai calculé auparavant : 
+								Les sommets des vagues sont les endroits avec la plus grande variation de pente, 
+								je compare donc la normale entre deux points et marque la surface en blanc si la différence de normale est superieure à un certain seuil.
+							</div>
+							<br>
+								Les paramètres des vagues comme la direction, la hauteur ou la vitesse peuvent être modifiés en fonction de la situation pour créer une météo plus ou moins calme.
+								La hauteur des vagues peut aussi être modifiée localement grâce à des zones pour réduire les vagues près des cotes ou à l'approche de haut fonds.
+							<img src="HaulAway_Images/Exemple_05.gif" alt="Example">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<a onclick="location.href='../Projects.html';">Projets</a><br>
+						&ensp;⤷ <a onclick="location.href='../Games.html';">Jeux</a><br>
+						&ensp;&ensp;⤷ Haul Away<br>
+					</div>
+					<img class="image-galery" src="HaulAway_Images/ScreenShot_01.jpg" alt="ScreenShot_01" height="400" width="400" onclick="focusImage('HaulAway_Images/ScreenShot_01.jpg')">
+					<img class="image-galery" src="HaulAway_Images/ScreenShot_02.jpg" alt="ScreenShot_02" height="400" width="400" onclick="focusImage('HaulAway_Images/ScreenShot_02.jpg')">
+				</div>
+			</article>
+		</div>
+		
+		<!--IMAGE POPUP-->
+		<div id="focusImage" style="display: none; position: fixed; top: 0px; left: 0px; width: calc(100% + 0px); height: calc(100% + 0px); background-color: rgba(0,0,0,0.5);" onclick="focusImage()">
+			<img src="OrbiUniverso_Images/ScreenShot_01.jpg" alt="ScreenShot" style="position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0; height: 90%;">
+		</div>
+		<script>
+			function focusImage(url){
+				var foc = document.getElementById("focusImage");
+				if(foc.style.display === "none"){
+					foc.style.display = "block";
+					foc.children[0].src = url;
+				}else
+					foc.style.display = "none";
+			}
+		</script>
+	</body>
+</html>

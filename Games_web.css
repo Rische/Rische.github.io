@@ -72,6 +72,25 @@ figure{
 	text-align: left;
 }
 
+.moreButton {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	
+	margin: auto;
+	margin-left: 35.5%;
+	width: 60%;
+	border: 3px solid #BBBBBB;
+	padding: 8px;
+}
+
+.moreButton:hover {
+	border: 3px solid #144;
+	background-color: #144;
+	transition: color 0.3s, background-color 0.3s;
+	color: white;
+	cursor: pointer;
+}
+
 @media only screen and (max-width: 662px){
 	article{
 		display: block;
