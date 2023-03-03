@@ -1,0 +1,11 @@
+{
+	"versionID": 1,
+	"version": "0.1",
+	"news": [
+		{
+			"image": "https://rische.github.io/Images/Games/HaulAway.jpg",
+			"tooltip": "Boat",
+			"link": "https://en.wikipedia.org/wiki/Main_Page"
+		}
+	]
+}
