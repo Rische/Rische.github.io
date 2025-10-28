@@ -318,6 +318,11 @@
 						 targetBeta = 0.5+event.clientY / screen.height * (Math.PI-moveDistanceVertical);
 					})
 
+					window.addEventListener('touchmove', function(event){
+						 targetAlpha = event.clientX / screen.width * -moveDistanceHorizontal + 1.5;
+						 targetBeta = 0.5+event.clientY / screen.height * (Math.PI-moveDistanceVertical);
+					})
+
 					scene.onBeforeRenderObservable.add(() => {
 						//alphaRotation = (alphaRotation + alphaRotationSpeed * scene.deltaTime) % (Math.PI * 2);
 						camera.alpha = alphaRotation + BABYLON.Scalar.Lerp(camera.alpha, targetAlpha, scene.deltaTime/500 );
@@ -397,3 +402,4 @@
 		</script>
 	</body>
 </html>
+
