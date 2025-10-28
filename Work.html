@@ -319,8 +319,11 @@
 					})
 
 					window.addEventListener('touchmove', function(event){
-						 targetAlpha = event.clientX / screen.width * -moveDistanceHorizontal + 1.5;
-						 targetBeta = 0.5+event.clientY / screen.height * (Math.PI-moveDistanceVertical);
+						if(event.touches.length > 0){
+							var touch = event.touches.item(0);
+							targetAlpha = touch.clientX / screen.width * -moveDistanceHorizontal + 1.5;
+							targetBeta = 0.5+touch.clientY / screen.height * (Math.PI-moveDistanceVertical)
+						}
 					})
 
 					scene.onBeforeRenderObservable.add(() => {
@@ -402,4 +405,5 @@
 		</script>
 	</body>
 </html>
+
 
