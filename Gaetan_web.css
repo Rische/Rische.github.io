@@ -1,6 +1,10 @@
 @import "Base_web.css"; 
 @import "Slides.css"; 
 
+html {
+  scroll-behavior: smooth;
+}
+
 article{
 	display: flex;
 	width: 100%;
@@ -141,6 +145,26 @@ figure{
 }
 .sectionLeft > figure:nth-child(4) {
 	display: none;
+}
+
+.hoverFade {
+	-webkit-box-shadow:0px 0px 51px 12px rgba(45,255,196,0);
+	-moz-box-shadow: 0px 0px 51px 12px rgba(45,255,196,0);
+	box-shadow: 0px 0px 51px 12px rgba(45,255,196,0);
+    transition:0.3s;
+}
+.hoverFade:hover {
+	-webkit-box-shadow:0px 0px 51px 12px rgba(45,255,196,1);
+	-moz-box-shadow: 0px 0px 51px 12px rgba(45,255,196,1);
+	box-shadow: 0px 0px 51px 12px rgba(45,255,196,1);
+	opacity:1;
+}
+.hoverGlow {
+	opacity:0;
+    transition:0.3s;
+}
+.hoverGlow:hover {
+	opacity:1;
 }
 
 @media only screen and (max-width: 940px){

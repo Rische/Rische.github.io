@@ -7,7 +7,7 @@
 		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
 	</head>
   
-	<body class="body">
+	<body class="body" >
 		<div>
 			<p>Gaétan Rische</p>
 			<p>VIDEO GAME PROGRAMMER</p>
@@ -39,20 +39,61 @@
 			
 			<article class="sectionLeft">
 				<header></header>
+				<figure class="slideshow-container" style="background-image:url(Images/Tools/Gaia_1.jpg)">
+					<img src="Images/TriangleRight.png" alt="" style="width:10%">
+					<a class="slideshow-prev" onclick="plusSlides(-1, 0, ['Images/Tools/Gaia_1.jpg','Images/Tools/Gaia_2.jpg','Images/Tools/Gaia_3.jpg','Images/Tools/Gaia_4.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 0, ['Images/Tools/Gaia_1.jpg','Images/Tools/Gaia_2.jpg','Images/Tools/Gaia_3.jpg','Images/Tools/Gaia_4.jpg'])">&#10095;</a>
+				</figure>
+				<div>
+					<p>
+						<b>Orbi Universo II - Gaïa, Editeur de terrain</b>
+						<br><br>
+						Un éditeur de terrain utilisé lors du développement du jeu <a href="Work.html#SOrbiUniverso2">Orbi Universo II</a>.
+						<br>
+						Permet d'importer une carte du monde sous la forme d'un fichier d'image verctorielle et de parametrer la géographie, le climat et les ressources naturelles de chaque région du monde.
+					</p>
+				</div>
+			</article>
+			
+			<div style="height:30px"> </div>
+			
+			<article class="sectionRight">
+				<header></header>
+				<div>
+					<p>
+						<b>Editeur d'animation</b>
+						<br><br>
+						Un programme utilisé pour ajouter des métadonnées à une liste d'images, comme un point d'origine ou un nombre de sous-animations pour des vues sous plusieurs angles.
+						<br>
+						Les métadonnées sont enregistrées dans un fichier et sont importées dans le moteur du jeu en même temps que les images pour recréer l'animation en jeu.
+					</p>
+				</div>
+				<figure class="slideshow-container" style="background-image:url(Images/Tools/Animation_1.gif)">
+					<img src="Images/TriangleRight.png" alt="" style="width:10%">
+					<a class="slideshow-prev" onclick="plusSlides(-1, 1, ['Images/Tools/Animation_1.gif','Images/Tools/Animation_2.jpg','Images/Tools/Animation_3.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 1, ['Images/Tools/Animation_1.gif','Images/Tools/Animation_2.jpg','Images/Tools/Animation_3.jpg'])">&#10095;</a>
+				</figure>
+			</article>
+			
+			<div style="height:30px"> </div>
+			
+			<article class="sectionLeft">
+				<header></header>
 				<figure class="slideshow-container" style="background-image:url(Images/Tools/Dialog_1.jpg)">
 					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 0, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 0, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10095;</a>
+					<a class="slideshow-prev" onclick="plusSlides(-1, 2, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 2, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10095;</a>
 				</figure>
 				<div>
 					<p>
 						<b>Editeur de dialogue</b>
 						<br><br>
-						Un éditeur de dialogue pour Unity utilisé lors du dévellopement du jeu Camp.us. Permet de créer des dialogues à choix multiples et de déclancher des évenements en jeu.
+						Un plugin d'éditeur de dialogue pour Unity utilisé lors du développement du jeu Camp.us. Permet de créer des dialogues à choix multiples et de déclancher des évenements en jeu.
 					</p>
 				</div>
-				<figure class="center-cropped" style="background-image:url(Images/Games/Souriez.jpg)"></figure>
 			</article>
+			
+			<div style="height:30px"> </div>
 			
 			<article class="sectionRight">
 				<header></header>
@@ -60,20 +101,20 @@
 					<p>
 						<b>Langage de programmation personalisé</b>
 						<br><br>
-						Un langage que j'ai développé pour le support de modding du jeu Orbi Universo. Pour plus d'information, visitez  <a href="Games/OrbiUniverso.html">la page dédié au jeu</a>.
+						Un langage que j'ai développé pour le support de modding du jeu Orbi Universo. Pour plus d'information, visitez  <a href="Work/OrbiUniverso.html">la page dédié au jeu</a>.
 					</p>
 				</div>
 				<figure class="slideshow-container" style="background-image:url(Images/Tools/Code_1.jpg)">
 					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 1, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 1, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10095;</a>
+					<a class="slideshow-prev" onclick="plusSlides(-1, 3, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10094;</a>
+					<a class="slideshow-next" onclick="plusSlides(1, 3, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10095;</a>
 				</figure>
 			</article>
 		
 		</div>
 		
 		<script>
-			var slideIndex = [0,0];
+			var slideIndex = [0,0,0,0];
 
 			function plusSlides(offset, slide, images) {
 				slideIndex[slide] = slideIndex[slide] + offset;
