@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<!--<link rel="stylesheet" href="Gaetan_web.css">-->
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+	</head>
+  
+	<body class="body">
+		
+		<form onsubmit="password(this['name'].value)" style="margin-left: calc(50% - 120px); margin-top: 25%;">
+			<input type="text" name="name" value="password">
+			<input type="submit" value="Download">
+			<br>
+			<a href="Profile.html" style="margin-left: 105px;">Back</a>
+		</form>
+		
+		<script>
+		function password(str){
+			var hash = hashCode(str);
+			if(hash != 1509377) {
+				alert('Incorrect password');
+			}else{
+				
+				downloadTextFile('test.pdf', "CV_Gaetan_Rische.pdf");
+				
+			}
+			
+			
+		}
+		
+		function hashCode(str){
+			var hash = 0;
+			for (var i = 0; i < str.length; i++) {
+				var code = str.charCodeAt(i);
+				hash = ((hash<<5)-hash)+code;
+				hash = hash & hash;
+			}
+			return hash;
+		}
+		
+		function loadFile(filePath) {
+		  var result = null;
+		  var xmlhttp = new XMLHttpRequest();
+		  xmlhttp.open("GET", filePath, false);
+		  xmlhttp.send();
+		  if (xmlhttp.status==200) {
+			result = xmlhttp.responseText;
+		  }
+		  return result;
+		}
+		
+		function downloadTextFile(file, name) {
+		  var rawFile = new XMLHttpRequest();
+		  rawFile.open("GET", file, false);
+		  rawFile.onreadystatechange = function () {
+			if(rawFile.readyState === 4)  {
+			  if(rawFile.status === 200 || rawFile.status == 0) {
+				var allText = rawFile.responseText;
+				download(name,allText);
+			   }
+			}
+		  }
+		  rawFile.send(null);
+		}
+		
+		function download(filename, text) {
+		  var element = document.createElement('a');
+		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		  element.setAttribute('download', filename);
+
+		  element.style.display = 'none';
+		  document.body.appendChild(element);
+
+		  element.click();
+
+		  document.body.removeChild(element);
+		}
+		</script>
+	</body>
+</html>
