@@ -23,7 +23,7 @@
 				alert('Incorrect password');
 			}else{
 				
-				downloadTextFile('test.pdf', "CV_Gaetan_Rische.pdf");
+				downloadV2('test.pdf');
 				
 			}
 			
@@ -51,18 +51,14 @@
 		  return result;
 		}
 		
-		function downloadTextFile(file, name) {
-		  var rawFile = new XMLHttpRequest();
-		  rawFile.open("GET", file, false);
-		  rawFile.onreadystatechange = function () {
-			if(rawFile.readyState === 4)  {
-			  if(rawFile.status === 200 || rawFile.status == 0) {
-				var allText = rawFile.responseText;
-				download(name,allText);
-			   }
-			}
-		  }
-		  rawFile.send(null);
+		function downloadV2(url) {
+			fetch(url).then(resp => resp.arrayBuffer()).then(resp => {
+				
+	            const file = new Blob([resp], {type: 'application/pdf'});
+				
+	    		var fileURL = URL.createObjectURL(file);
+	    		window.open(fileURL);
+	        });
 		}
 		
 		function download(filename, text) {
@@ -85,4 +81,5 @@
 		</script>
 	</body>
 </html>
+
 
