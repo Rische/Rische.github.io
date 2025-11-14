@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Gaétan Rische's Website</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../Games_web.css">
+		<meta name="Gaétan Rische" content="Gaétan Rische's Website"/>
+		<script type="text/javascript" src="../AutoHeader.js"></script>
+	</head>
+  
+	<body class="body" onLoad="InitializeMenu(true)">
+		
+		<!--TOUT LE RESTE-->
+		<div class="main">
+			<article>
+				<header></header>
+				<div>
+					<img src="../Images/Work/OrbiUniverso2_Title.jpg" alt="Title">
+					<p>
+						<b>Orbi Universo II (2025)</b>
+						<a href="https://store.steampowered.com/app/3210330/Orbi_Universo_II/" rel="noopener noreferrer" target="_blank"><img src="../Images/Work/Logo_Steam.png" alt="Steam" align="right" style="max-width:10%; display:inline;"></a>
+						<br>
+						Developpé et édité par <a href="../Work.html#SSarl">Orbi Universo Team SARL</a>
+						<br><br>
+						<i>
+						• Moteur : Unity
+						<br>
+						• Rôle : Programmeur
+						</i>
+						<br><br>
+						<b>66 898</b> lignes de code écrites par moi-même.
+						<br>
+						<b>61 239</b> lignes de code écrites par le game designer.
+					</p>
+					<div>
+						<i>Guidez le destin de votre propre civilisation dans ce jeu de simulation-stratégie abstraite. Maîtrisez un système complexe de nodes et faites évoluer votre société de ses humbles débuts à la maîtrise de l'atome. Votre civilisation pourra-t-elle *vraiment* résister à l'épreuve du temps ?</i>
+						
+					</div>
+					<img src="OrbiUniverso2_Images/OrbiUniverso2_Banner.jpg" alt="Banner">
+					<p>
+						<font size=6><b>Contexte</b></font>
+						<br>
+						5 ans après le succès de Orbi Universo, nous (l'équipe de Orbi Universo Team SARL) commençons le développement d'une suite encore plus ambitieuse.
+						<br>
+						<br>
+						Grâce à l'expérience acquise lors de nos précédents projets, nous étions maintenant confiants de pouvoir réaliser un jeu pouvant satisfaire l'exigence de nos joueurs et de pousser la vision originale de Orbi Universo encore plus loin : <i>Une simulation détaillée de l'évolution des civilisations et les relations qui les lient entre elles.</i>
+						
+						<br>
+					</p>
+					<div>
+						<div class="explanation">
+							<font size=6><b>Mes Objectifs</b></font>
+							<br><br>
+							• Rédaction de la documentation technique
+							<br>
+							• Programation des fonctionnalitées de base du systeme:
+							<font size=3>
+								<br>&ensp;&ensp;&ensp;Simulation
+								<br>&ensp;&ensp;&ensp;API d'implémentation des mécaniques de jeu
+								<br>&ensp;&ensp;&ensp;Interface utilisateur
+								<br>&ensp;&ensp;&ensp;Menus
+								<br>&ensp;&ensp;&ensp;Prise en charge de plusieurs langages
+								<br>&ensp;&ensp;&ensp;Chargement et interpretation des fichiers de données
+								<br>&ensp;&ensp;&ensp;Sauvegarde de la progression du joueur
+								<br>&ensp;&ensp;&ensp;Rendu graphique
+							</font>
+							<br>
+							• Developpement d'un logiciel d'édition de carte du monde (<a href="../Tools.html#SGaia" style="color:#77f">plus d'info</a>)
+							<br>
+							• Design de l'interface graphique et des effets visuels
+							<br><br>
+							Comme pour le premier opus, le code du projet est séparé en deux parties:
+							<br><br>
+							<div style="margin-left:30px">
+								• Une écrite par moi-même, permettant le fonctionnement de base du jeu (Menus, Boucle de jeu, Interfaces, Chargement des fichiers, sauvegarde) et servant de fondation à l'implémentation des mécaniques de jeu.
+								<br>
+								• Une écrite par le game designer, les règles du jeu en utilisant les fonctions que j'ai développées pour rendre l'implémentation des mécaniques de jeu le plus simple possible et le prototypage rapide.
+							</div>
+							<br>
+						</div>
+					</div>
+					<br>
+					<div>
+						<div class="explanation">
+							<font size=6><b>Implémentation des mécaniques de jeu</b></font>
+							<br><br>
+							Contrairement à la première version de <a href="../Work.html#SOrbiUniverso" style="color:#77f">Orbi Universo</a> pour lequel j'ai créé un langage de programmation propre à l'implémentation des mécaniques de jeu et un interprèteur dédié, j'ai développé une API C# contenant des classes et des fonctions propres aux mécaniques de jeu implémentées par le game designer.
+							<br><br>
+							Les civilisations sont présentées sous la forme d'éléments appelés <b>noeuds</b>, qui représentent les concepts fondamentaux qui les caractérisent <i>(Gouvernement, Technologies, Infrastructures, Armée, ...)</i>
+							<img src="OrbiUniverso2_Images/OrbiUniverso2_Nodes.png" alt="Nodes">
+							Concrètement, chaque type de noeud hérite d'une classe de base :
+							<div class="code">
+								<font color="#f44">public abstract class</font> <font color="#55f">Node</font>
+							</div>
+							Ensuite le game designer peut implémenter des méthodes et des interfaces que j'ai écrites pour facilement modifier le comportement de chaque noeud.
+							<br><br><br>
+							<img src="OrbiUniverso2_Images/OrbiUniverso2_Nuke.png" alt="Nuke" align="right" style="max-width:98px; display:inline;">
+							Voici un exemple de l'interface permettant d'implémenter l'arme nucléaire dans un noeud.
+							<br><br>
+							Il suffit d'implémenter l'interface suivante:
+							<div class="code">
+								<font color="#181">// Donne à un noeud la capacité de l'arme nucléaire.</font>
+								<br><font color="#f44">public interface</font> <font color="#afa">IWeaponOfMassDestruction</font>
+								<br>{
+									<br>&ensp;<font color="#181">// Obtient l'origine de la frappe.</font>
+									<br>&ensp;<font color="#55f">Region</font> <font color="#f81">GetLauchSite</font>();
+									<br><br>&ensp;<font color="#181">// Obtient le temps nécessaire pour atteindre la cible.</font>
+									<br>&ensp;<font color="#f44">float</font> <font color="#f81">GetFlightDuration</font>(<font color="#55f">Region</font> launchingRegion, <font color="#55f">Region</font> targetRegion);
+									<br><br>&ensp;<font color="#181">// Obtient la force de la frappe.</font>
+									<br>&ensp;<font color="#f44">float</font> <font color="#f81">GetPower</font>(<font color="#55f">Region</font> launchingRegion, <font color="#55f">Region</font> targetRegion);
+									<br><br>&ensp;<font color="#181">// La frappe peut-elle partir de cette région ?</font>
+									<br>&ensp;<font color="#f44">bool</font> <font color="#f81">CanLaunch</font>(<font color="#55f">Region</font> launchingRegion);
+									<br><br>&ensp;<font color="#181">// La frappe peut-elle atteindre cette région ?</font>
+									<br>&ensp;<font color="#f44">bool</font> <font color="#f81">CanTargetRegion</font>(<font color="#55f">Region</font> launchingRegion, <font color="#55f">Region</font> targetRegion);
+									<br><br>&ensp;<font color="#181">// Actions exécutées après un lancement.</font>
+									<br>&ensp;<font color="#f44">void</font> <font color="#f81">OnAfterLaunch</font>(<font color="#55f">Region</font> launchingRegion, <font color="#55f">Region</font> targetRegion);
+									<br><br>&ensp;<font color="#181">// Actions exécutées après une frappe.</font>
+									<br>&ensp;<font color="#f44">void</font> <font color="#f81">OnImpact</font>(<font color="#55f">Simulation</font> simualtion, <font color="#55f">Civilization</font> launchingCivilization, <font color="#55f">Region</font> launchingRegion, <font color="#55f">Region</font> targetRegion, <font color="#f44">float</font> power);
+								<br>}
+							</div>
+							<br>
+							Des implémentations similaires existent pour toutes les fonctionnalités nécessaires à une civilisation, et permettent de facilement ajouter du contenu.
+							<br><br>
+						</div>
+					</div>
+					<p>
+						<img src="../Images/Work/Logo_CNC.png" alt="CNC" align="right" style="max-width:40%; display:inline;">
+						<font size=6><b>Financement</b></font>
+						<br>
+						<br>
+						Le projet Orbi Universo II a été partiellement financé par le CNC, des fonds ont été levés pour la phase de préproduction et la phase de production.
+						<br>
+						Dans les deux cas, j'ai rédigé la partie technique du dossier de financement, décrivant les enjeux techniques et technologiques du projet.
+						<br>
+						<br>
+						Voici un extrait du document fourni au CNC :
+						<embed src="OrbiUniverso2_Docs\OrbiUniverso2_CNC.pdf" width="100%" height="500" type="application/pdf">
+					</p>
+				</div>
+				<div>
+					<div>
+						<a onclick="location.href='../Projects.html';">Projets</a><br>
+						&ensp;⤷ <a onclick="location.href='../Work.html';">Professionnels</a><br>
+						&ensp;&ensp;⤷ Orbi Universo II<br>
+					</div>
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_1.jpg" alt="ScreenShot_01" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_1.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_2.jpg" alt="ScreenShot_02" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_2.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_3.jpg" alt="ScreenShot_03" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_3.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_4.jpg" alt="ScreenShot_04" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_4.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_5.jpg" alt="ScreenShot_05" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_5.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_6.jpg" alt="ScreenShot_06" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_6.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_7.jpg" alt="ScreenShot_07" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_7.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_8.jpg" alt="ScreenShot_08" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_8.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_9.jpg" alt="ScreenShot_09" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_9.jpg')">
+					<img class="image-galery" src="../Images/Work/OrbiUniverso2_10.jpg" alt="ScreenShot_10" height="400" width="400" onclick="focusImage('../Images/Work/OrbiUniverso2_10.jpg')">
+				</div>
+			</article>
+		</div>
+		
+		<!--IMAGE POPUP-->
+		<div id="focusImage" style="display: none; position: fixed; top: 0px; left: 0px; width: calc(100% + 0px); height: calc(100% + 0px); background-color: rgba(0,0,0,0.5);" onclick="focusImage()">
+			<img src="../Images/Work/OrbiUniverso2_1.jpg" alt="ScreenShot" style="position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0; height: 90%;">
+		</div>
+		<script>
+			function focusImage(url){
+				var foc = document.getElementById("focusImage");
+				if(foc.style.display === "none"){
+					foc.style.display = "block";
+					foc.children[0].src = url;
+				}else
+					foc.style.display = "none";
+			}
+		</script>
+	</body>
+</html>
