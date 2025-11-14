@@ -167,6 +167,30 @@ figure{
 	opacity:1;
 }
 
+.downArrow{
+	animation: downArrowAnimation 1s cubic-bezier(.79,.14,.15,.86) infinite;
+}
+
+@keyframes downArrowAnimation{
+  0% {
+    transform: translate3d(0, -5px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+  100% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+/*Projects items*/
+article > figure > span > b {
+	/**/
+}
+article > figure:hover span > b {
+  color: #9fe
+}
+
 @media only screen and (max-width: 940px){
 	
 	.paragraphe > div:nth-child(2) > iframe { /* video */

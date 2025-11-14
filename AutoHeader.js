@@ -4,6 +4,7 @@ function InitializeMenu(projectPage){
 	if(userLang === null){
 		userLang = navigator.language || navigator.userLanguage;
 		localStorage.setItem("lang", userLang);
+		//localStorage.setItem("lang", "fr");
 	}
 		
 	
@@ -35,14 +36,15 @@ function InitializeMenu(projectPage){
 	
 	container.prepend(nav);
 	
-	var menus = [ [["PROFIL","PROFILE"],'index.html' ], [["PROJETS","PROJECTS"],'Projects.html' ], [["CV","RESUME"],'CV_Gaetan_Rische_Fr.pdf' ] ];
+	var menus = [ [["PROFIL","PROFILE"],['Profile.html','Profile_en.html']], [["PROJETS","PROJECTS"],['Projects.html','Projects_en.html'] ], [["CV","RESUME"],['Resume.html','Resume_en.html'] ] ];
 	
 	Array.prototype.forEach.call(menus, ele => {
 		var tab = htmlToElement('<nav>');
+		var langIndex = window.location.href.includes("_en.html") ? 1 : 0;
 		tab.className = "menuText";
-		tab.onclick = function() {window.location.href = (projectPage ? "../" : "") + ele[1]};
+		tab.onclick = function() {window.location.href = (projectPage ? "../" : "") + ele[1][langIndex]};
 		var txt = htmlToElement('<p>');
-		txt.textContent = ele[0][userLang === "fr" ? 0 : 1];
+		txt.textContent = ele[0][langIndex];
 		nav.append(tab);
 		tab.append(txt);
 	});
@@ -56,7 +58,7 @@ function InitializeMenu(projectPage){
 	</div>
 	*/
 	container.prepend(htmlToElement('<div>'));
-	
+
 	var name = htmlToElement('<p>');
 	name.textContent = "Gaétan Rische";
 	container.childNodes[0].append(name);
@@ -70,6 +72,7 @@ function InitializeMenu(projectPage){
 	var flags = htmlToElement('<p>');
 	container.childNodes[0].append(flags);
 	
+	// FRENCH
 	var fr = htmlToElement('<a>');
 	fr.textContent = "🇫🇷";
 	fr.onclick = function() {setLang("fr")};
@@ -79,10 +82,14 @@ function InitializeMenu(projectPage){
 	flags.childNodes[1].textContent = " ";
 	flags.childNodes[1].setAttribute("style", "-moz-user-select: none; -webkit-user-select: none;");
 	
+	// ENGLISH
 	var en = htmlToElement('<a>');
 	en.textContent = "🇬🇧";
 	en.onclick = function() {setLang("en")};
 	flags.append(en);
+	
+	
+	
 }
 
 /**
@@ -108,5 +115,17 @@ function htmlToElements(html) {
 
 function setLang(lang){
 	localStorage.setItem("lang", lang);
-	document.location.reload(true);
+	
+	var array = window.location.href.split('#')[0].split('/');
+		var loc = array[array.length-1];
+		
+		if(loc.includes("_en.html")){
+			if(lang == "fr")
+				window.location.href = loc.substring(0,loc.length-8) + ".html";
+		}else if(lang == "en"){
+			window.location.href = loc.substring(0,loc.length-5) + "_en.html";
+		}
+	//document.location.reload(true);
+	
+	
 }

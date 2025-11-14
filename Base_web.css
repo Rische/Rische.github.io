@@ -21,6 +21,7 @@ body > div:nth-child(1) > p:nth-child(2) {
 body > div:nth-child(1) >  {
 	font-size: 28px;
 	color: #BBB
+	z-index: 2;
 }
 body > div:nth-child(2) > div {
 	width: 100%;
@@ -53,7 +54,7 @@ body > div:nth-child(1) > p:nth-child(4) > a {
 {
   width: 95%;
   max-width: 1200px;
-  height: 100px;
+  height: 70px;
   margin: 1% auto;
   top: 0;
   left: 0;
@@ -80,6 +81,10 @@ body > div:nth-child(1) > p:nth-child(4) > a {
 
 	transition: width 0.3s ease-out;
 	cursor: pointer;
+}
+.flex > nav > p
+{
+	margin-top: 10.6px;
 }
 .flex > nav:nth-child(1) {
 	border-right: 1px solid black;
@@ -115,6 +120,18 @@ div{
 	margin: 0;
 	background-position: center top;
 	background-repeat: no-repeat;
+}
+
+.infiniteScrollContainer {
+	overflow: hidden;
+			
+}
+.infiniteScrollItem {
+position: absolute;
+  background: url("Images/Games/Outgunned_Title.png") repeat-x;
+  height: 300px;
+  width: 5076px;
+  animation: infiniteSlide 60s linear infinite;
 }
 
 @media only screen and (max-width: 940px){
