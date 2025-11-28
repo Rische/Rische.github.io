@@ -100,7 +100,7 @@ figure{
 
 .containerCode {
   display:grid; 
-  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
 }
 .containerCode div {
   border: 1px solid white;
