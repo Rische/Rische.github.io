@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<head>
 		<title>Gaétan Rische's Website</title>
 		<meta charset="utf-8"/>
@@ -45,116 +46,129 @@
 				Some problems require better tools than simple lines of code, with a dedicated and intuitive interface, which is why I have developed these tools throughout my career.
 			</article>
 			
-			<article id="SGaia" class="sectionLeft">
-				<header></header>
-				<figure class="slideshow-container" style="background-image:url(Images/Tools/Gaia_1.jpg)">
-					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 0, ['Images/Tools/Gaia_1.jpg','Images/Tools/Gaia_2.jpg','Images/Tools/Gaia_3.jpg','Images/Tools/Gaia_4.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 0, ['Images/Tools/Gaia_1.jpg','Images/Tools/Gaia_2.jpg','Images/Tools/Gaia_3.jpg','Images/Tools/Gaia_4.jpg'])">&#10095;</a>
-				</figure>
-				<div>
-					<p>
-						<b>Orbi Universo II - Gaïa, Terrain editor</b>
-						<br><br>
-						A terrain editor used during the development of the game <a href="Work_en.html#SOrbiUniverso2">Orbi Universo II</a>.
-						<br>
-						Allows you to import a world map in the form of a vector image file and configure the geography, climate, and natural resources of each region of the world.
-					</p>
+			<div ng-app="articlesApp" ng-controller="controller">
+				<div ng-repeat="article in articles">
+					
+					<div ng-switch on="$first" id="{{article.id}}">
+						<div ng-switch-when=true></div>
+						<div ng-switch-default style="height:30px"></div>
+					</div>
+					
+					<article class="section{{$index | correctStyle}}">
+						<header></header>
+						<figure ng-if="$even">
+							<figure class="slideshow-container" style="background-image:url({{article.images[imageIndices[$index]]}})">
+								<img src="Images/TriangleRight.png" alt="" style="width:10%">
+								<figure ng-if="article.images.length > 1">
+									<a class="slideshow-prev" ng-click="onGalleryClicked($index,-1)">&#10094;</a>
+									<a class="slideshow-next" ng-click="onGalleryClicked($index,1)">&#10095;</a>
+								</figure>
+							</figure>
+						</figure>
+						<div style="{{article.style}}">
+							<div ng-repeat="content in article.contents">
+								<div ng-switch on="content.type" >
+									<span ng-switch-when="title"><b>{{content.text}}</b></span>
+									<span ng-switch-when="italic"><i>{{content.text}}</i></span>
+									<span ng-switch-when="space"><br>{{content.text}}</span>
+									<span ng-switch-when="link">{{content.begin}}<a href='{{content.href}}'>{{content.text}}</a>{{content.end}}</span>
+									<span ng-switch-default>{{content.text}}</span>
+								</div>
+							</div>
+						</div>
+						<figure ng-if="$odd">
+							<figure class="slideshow-container" style="background-image:url({{article.images[imageIndices[$index]]}})">
+								<img src="Images/TriangleRight.png" alt="" style="width:10%">
+								<figure ng-if="article.images.length > 1">
+									<a class="slideshow-prev" ng-click="onGalleryClicked($index,-1)">&#10094;</a>
+									<a class="slideshow-next" ng-click="onGalleryClicked($index,1)">&#10095;</a>
+								</figure>
+							</figure>
+						</figure>
+					</article>
+				
 				</div>
-			</article>
-			
-			<div id= "SAnimEdit" style="height:30px"> </div>
-			
-			<article class="sectionRight">
-				<header></header>
-				<div>
-					<p style="line-height:140%">
-						<b>Animation editor</b>
-						<br><br>
-						<i>Images always have their origin point in the upper left corner, and giving them an arbitrary offset value to re-center the origin is not the best method, especially with the large number of images that make up some animations.</i>
-						<br><br>
-						I created this program to add metadata to a list of images, such as an origin point or a number of sub-animations for multiple-angle views.
-						<br>
-						The metadata is saved in a file and imported into the game engine along with the images to recreate the animation in the game.
-					</p>
-				</div>
-				<figure class="slideshow-container" style="background-image:url(Images/Tools/Animation_4.gif)">
-					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 1, ['Images/Tools/Animation_4.gif','Images/Tools/Animation_1.gif','Images/Tools/Animation_2.jpg','Images/Tools/Animation_3.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 1, ['Images/Tools/Animation_4.gif','Images/Tools/Animation_1.gif','Images/Tools/Animation_2.jpg','Images/Tools/Animation_3.jpg'])">&#10095;</a>
-				</figure>
-			</article>
-			
-			<div id= "STilemap" style="height:30px"> </div>
-			
-			<article class="sectionLeft">
-				<header></header>
-				<figure class="slideshow-container" style="background-image:url(Images/Tools/Tilemap_1.jpg)">
-					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-				</figure>
-				<div>
-					<p>
-						<b>Tilemap editor</b>
-						<br><br>
-						A program that allows you to edit a two-dimensional grid and assign a value to each cell to form a tilemap. Also supports editing multiple lists of arbitrary points on the grid space.
-						<br>
-						The data is saved in a file and imported into the engine to recreate the gameplay area on the grid.
-					</p>
-				</div>
-			</article>
-			
-			<div style="height:30px"> </div>
-			
-			<article class="sectionRight">
-				<header></header>
-				<div>
-					<p>
-						<b>Dialog editor</b>
-						<br><br>
-						A dialogue editor plugin for Unity used during the development of the game Camp.us. Allows you to create multiple-choice dialogues and trigger in-game events.
-					</p>
-				</div>
-				<figure class="slideshow-container" style="background-image:url(Images/Tools/Dialog_1.jpg)">
-					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 2, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 2, ['Images/Tools/Dialog_1.jpg','Images/Tools/Dialog_2.jpg','Images/Tools/Dialog_3.jpg'])">&#10095;</a>
-				</figure>
-			</article>
-			
-			<div style="height:30px"> </div>
-			
-			<article class="sectionLeft">
-				<header></header>
-				<figure class="slideshow-container" style="background-image:url(Images/Tools/Code_1.jpg)">
-					<img src="Images/TriangleRight.png" alt="" style="width:10%">
-					<a class="slideshow-prev" onclick="plusSlides(-1, 3, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10094;</a>
-					<a class="slideshow-next" onclick="plusSlides(1, 3, ['Images/Tools/Code_1.jpg','Images/Tools/Code_2.jpg','Images/Tools/Code_3.jpg'])">&#10095;</a>
-				</figure>
-				<div>
-					<p>
-						<b>Custom programming language</b>
-						<br><br>
-						A language I developed for modding support for the game Orbi Universo. For more information, visit <a href="Work/OrbiUniverso.html">the page dedicated to the game (French only)</a>
-					</p>
-				</div>
-			</article>
+			</div>
 		
 		</div>
 		
 		<script>
-			var slideIndex = [0,0,0,0];
-
-			function plusSlides(offset, slide, images) {
-				slideIndex[slide] = slideIndex[slide] + offset;
-				if (slideIndex[slide] < 0) { slideIndex[slide] = images.length - 1; }
-				if (slideIndex[slide] >= images.length) { slideIndex[slide] = 0; }
-				showSlides(slide, slideIndex[slide], images);
-			}
-
-			function showSlides(slide, image, images) {
-			  var x = document.getElementsByClassName("slideshow-container");
-			  x[slide].style.backgroundImage = "url("+images[image]+")";
-			}
+		var app = angular.module('articlesApp', []);
+		app.filter('correctStyle', function() {
+			return function(index) {
+				if(index % 2 == 0) return "Left"; else return "Right";
+			};
+		});
+		app.controller('controller', function($scope) {
+			$scope.imageIndices = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+			$scope.onGalleryClicked = function(index, offset){ var i = $scope.imageIndices[index]+offset; if(i < 0) i = $scope.articles[index].images.length-1; else i = i % $scope.articles[index].images.length; $scope.imageIndices[index] = i; }
+			$scope.articles = [
+				{ 
+					id : "SGaia",
+					contents : [
+						{ type:"title", text:"Orbi Universo II - Gaïa, Terrain editor" },
+						{ type:"space" },
+						{ type:"link", begin:"A terrain editor used during the development of the game ", text:"Orbi Universo II", href:"Work_en.html#SOrbiUniverso2" },
+						{ text:"Allows you to import a world map in the form of a vector image file and configure the geography, climate, and natural resources of each region of the world." },
+					],
+					images : [ 'Images/Tools/Gaia_1.jpg','Images/Tools/Gaia_2.jpg','Images/Tools/Gaia_3.jpg','Images/Tools/Gaia_4.jpg' ],
+				},
+				{ 
+					id : "SEngine",
+					contents : [
+						{ type:"title", text:"Custom C# game engine" },
+						{ type:"space" },
+						{ text:"My own engine for developing games based on a hexagonal grid." },
+						{ type:"space" },
+						{ text:"Uses Raylib to abstract OpenGL functionality and ImGUI for the user interface." },
+						{ type:"space" },
+						{ text:"Allows you to import images, animations, 3D models, and complex data structures saved as JSON files." },
+					],
+					images : [ 'Images/Tools/Engine_1.jpg', 'Images/Tools/Engine_2.gif' ],
+				},
+				{ 
+					id : "SAnimEdit",
+					style : "line-height:1.2",
+					contents : [
+						{ type:"title", text:"Animation editor" },
+						{ type:"space" },
+						{ type:"italic", text:"Images always have their origin point in the upper left corner, and giving them an arbitrary offset value to re-center the origin is not the best method, especially with the large number of images that make up some animations." },
+						{ type:"space" },
+						{ text:"I created this program to add metadata to a list of images, such as an origin point or a number of sub-animations for multiple-angle views." },
+						{ text:"The metadata is saved in a file and imported into the game engine along with the images to recreate the animation in the game." },
+					],
+					images : [ 'Images/Tools/Animation_4.gif','Images/Tools/Animation_1.gif','Images/Tools/Animation_2.jpg','Images/Tools/Animation_3.jpg' ],
+				},
+				{ 
+					id : "STilemap",
+					contents : [
+						{ type:"title", text:"Tilemap editor" },
+						{ type:"space" },
+						{ text:"A program that allows you to edit a two-dimensional grid and assign a value to each cell to form a “tilemap”. Also supports editing multiple lists of arbitrary points on the grid space." },
+						{ text:"The data is saved in a file and imported into the engine to recreate the gameplay area on the grid." },
+					],
+					images : [ 'Images/Tools/Tilemap_1.jpg' ],
+				},
+				{ 
+					id : "SDialog",
+					contents : [
+						{ type:"title", text:"Dialog editor" },
+						{ type:"space" },
+						{ text:"A dialogue editor plugin for Unity used during the development of the game Camp.us. Allows you to create multiple-choice dialogues and trigger in-game events." },
+					],
+					images : [ 'Images/Tools/Dialog_1.jpg', 'Images/Tools/Dialog_2.jpg', 'Images/Tools/Dialog_3.jpg' ],
+				},
+				{ 
+					id : "SLang",
+					contents : [
+						{ type:"title", text:"Custom programming language" },
+						{ type:"space" },
+						{ type:"link", begin:"A language I developed for modding support for the game Orbi Universo. For more information, visit ", text:"the page dedicated to the game (French only)", href:"Work_en.html#SOrbiUniverso", end:"." },
+					],
+					images : [ 'Images/Tools/Code_1.jpg', 'Images/Tools/Code_2.jpg', 'Images/Tools/Code_3.jpg' ],
+				},
+			]
+		});
 		</script>
 	</body>
 </html>
