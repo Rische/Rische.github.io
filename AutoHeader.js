@@ -64,7 +64,7 @@ function InitializeMenu(projectPage){
 	container.childNodes[0].append(name);
 	
 	var job = htmlToElement('<p>');
-	job.textContent = "VIDEO GAME PROGRAMMER";
+	job.textContent = "DEVELOPER";
 	container.childNodes[0].append(job);
 	
 	container.childNodes[0].append(htmlToElement('<div>'));
